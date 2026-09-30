@@ -1,5 +1,7 @@
-#include "vault.h"
 #include<string.h>
+#include<stdio.h>
+#include "vault.h"
+
 void vault_init(Vault *vault)
 {
     vault->count=0;
@@ -43,4 +45,12 @@ int vault_delete(Vault *vault,int index)
     }
     vault->count--;
     return 0;
+}
+
+void vault_list(const Vault *vault)
+{
+    for(int i=0;i<vault->count;i++)
+    {
+        printf("%d. %s - %s\n",i+1,vault->credentials[i].username,vault->credentials[i].service);
+    }
 }
