@@ -30,3 +30,17 @@ int vault_find(const Vault *vault,const char *service)
     }
     return -1;
 }
+
+int vault_delete(Vault *vault,int index)
+{
+    if(index<0 || index>=vault->count)
+    {
+        return -1;
+    }
+    for(int i=index;i<vault->count;i++)
+    {
+        vault->credentials[i]=vault->credentials[i+1];
+    }
+    vault->count--;
+    return 0;
+}
