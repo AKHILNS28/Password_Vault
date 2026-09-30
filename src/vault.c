@@ -18,3 +18,15 @@ int vault_add(Vault *vault,const char *service,const char *username,const char *
 
     return 0;
 }
+
+int vault_find(const Vault *vault,const char *service)
+{
+    for(int i=0;i<vault->count;i++)
+    {
+        if(strcmp(vault->credentials[i].service,service)==0)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
