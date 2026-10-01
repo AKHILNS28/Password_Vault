@@ -1,5 +1,18 @@
 #include<stdio.h>
+#include<string.h>
 #include "ui.h"
+
+static read_input(char *name,size_t n)
+{
+    fgets(name,n,stdin);
+    name[strcspn(name,"\n")]='\0';
+}
+
+static clear_input(void)
+{
+    int c;
+    while((c=getchar())!='\n'&&c!=EOF);
+}
 
 void ui_run(Vault *vault)
 {
@@ -28,14 +41,16 @@ void ui_run(Vault *vault)
                 char username[100];
                 char password[100];
 
+                clear_input();
+
                 printf("Enter service: ");
-                scanf("%99s", service);
+                read_input(service,sizeof(service));
 
                 printf("Enter username: ");
-                scanf("%99s", username);
+                read_input(username,sizeof(username));
 
                 printf("Enter password: ");
-                scanf("%99s", password);
+                read_input(password,sizeof(password));
 
                 int result = vault_add(vault,service,username,password);
 
@@ -56,9 +71,11 @@ void ui_run(Vault *vault)
             case 3:
             {
                 char service[100];
+                
+                clear_input();
 
                 printf("Enter service to find: ");
-                scanf("%99s", service);
+                read_input(service,sizeof(service));
 
                 int i = vault_find(vault, service);
 
