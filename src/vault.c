@@ -40,7 +40,7 @@ int vault_delete(Vault *vault,int index)
     {
         return -1;
     }
-    for(int i=index;i<vault->count;i++)
+    for(int i=index;i<vault->count-1;i++)
     {
         vault->credentials[i]=vault->credentials[i+1];
     }
