@@ -2,13 +2,13 @@
 #include<string.h>
 #include "ui.h"
 
-static read_input(char *name,size_t n)
+static void read_input(char *name,size_t n)
 {
     fgets(name,n,stdin);
     name[strcspn(name,"\n")]='\0';
 }
 
-static clear_input(void)
+static void clear_input(void)
 {
     int c;
     while((c=getchar())!='\n'&&c!=EOF);
