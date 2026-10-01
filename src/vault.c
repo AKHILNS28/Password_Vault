@@ -5,6 +5,7 @@
 void vault_init(Vault *vault)
 {
     vault->count=0;
+    vault->password_set=0;
 }
 
 int vault_add(Vault *vault,const char *service,const char *username,const char *password)

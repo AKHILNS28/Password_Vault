@@ -1,6 +1,8 @@
 #ifndef VAULT_H
 #define VAULT_H
 
+#include "crypto.h"
+
 #define MAX_SERVICE_LENGTH 100
 #define MAX_USERNAME_LENGTH 100
 #define MAX_PASSWORD_LENGTH 100
@@ -15,12 +17,19 @@ typedef struct{
 typedef struct{
     Credential credentials[MAX_CREDENTIALS];
     int count;
+    unsigned char salt[SALT_SIZE];
+    unsigned char password_hash[HASH_SIZE];
+    int password_set;
 }Vault;
 
 void vault_init(Vault *vault);
-int vault_add(Vault *vault, const char *service,const char *username, const char *password);
+
+int vault_add(Vault *vault,const char *service,const char *username,const char *password);
+
 int vault_delete(Vault *vault,int index);
-int vault_find(const Vault *vault, const char *service);
+
+int vault_find(const Vault *vault,const char *service);
+
 void vault_list(const Vault *vault);
 
 #endif
