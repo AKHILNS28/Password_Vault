@@ -278,19 +278,6 @@ Master Password + Salt
 
 This means that obtaining the vault file does not directly reveal the AES encryption key.
 
-## Limitations
-
-This is an educational C project and is not intended to replace professionally audited password managers.
-
-Current limitations include:
-
-* No master password change functionality
-* Password input uses standard terminal input
-* Vault serialization is designed for the current project environment
-* No cloud synchronization
-* No multi-device support
-* No graphical user interface
-
 ## Technologies
 
 * C
